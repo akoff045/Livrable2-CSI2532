@@ -95,6 +95,8 @@ CREATE TABLE Client (
     NAS VARCHAR(20) UNIQUE,
     role_ID INT,
     date_enrg DATE,
+    username VARCHAR(20) UNIQUE,
+    password VARCHAR,
     CONSTRAINT fk_role_client FOREIGN KEY (role_ID) REFERENCES Role(role_ID),
     CONSTRAINT fk_NAS FOREIGN KEY (NAS) REFERENCES Personne(NAS)
     
