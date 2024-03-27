@@ -1,3 +1,14 @@
+-- Création de la table Address
+CREATE TABLE Address (
+    address_ID INT PRIMARY KEY,
+    num VARCHAR(20),
+    street VARCHAR(100),
+    city VARCHAR(50),
+    province VARCHAR(50),
+    country VARCHAR(50),
+    code_post VARCHAR(10) CHECK (LENGTH(code_post) >= 5)
+);
+
 -- Création de la table Personne
 CREATE TABLE Personne (
     NAS VARCHAR(20) PRIMARY KEY,
@@ -5,6 +16,15 @@ CREATE TABLE Personne (
     prenom VARCHAR(100),
     address_ID INT,
     CONSTRAINT fk_address_personne FOREIGN KEY (address_ID) REFERENCES Address(address_ID)
+);
+
+-- Création de la table Chaine
+CREATE TABLE Chaine (
+    chaine_ID INT PRIMARY KEY,
+    nom_chaine VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    tele_num INT,
+    hotel_ID INT
 );
 
 -- Création de la table Hotel
@@ -20,29 +40,38 @@ CREATE TABLE Hotel (
     chambre_num INT,
     chambre_ID INT,
     CONSTRAINT fk_chaine_hotel FOREIGN KEY (chaine_ID) REFERENCES Chaine(chaine_ID),
-    CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS),
     CONSTRAINT fk_address_hotel FOREIGN KEY (address_ID) REFERENCES Address(address_ID)
 );
 
--- Création de la table Address
-CREATE TABLE Address (
-    address_ID INT PRIMARY KEY,
-    num VARCHAR(20),
-    street VARCHAR(100),
-    city VARCHAR(50),
-    province VARCHAR(50),
-    country VARCHAR(50),
-    code_post VARCHAR(10) CHECK (LENGTH(code_post) >= 5)
+ALTER TABLE Chaine ADD CONSTRAINT fk_hotel_ID FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID);
+
+-- Création de la table Role
+CREATE TABLE Role (
+    role_ID INT PRIMARY KEY,
+    nom_role VARCHAR(100) UNIQUE
 );
 
--- Création de la table Chaine
-CREATE TABLE Chaine (
-    chaine_ID INT PRIMARY KEY,
-    nom_chaine VARCHAR(100) UNIQUE,
-    email VARCHAR(100) UNIQUE,
-    tele_num INT,
+-- Création de la table Employe
+CREATE TABLE Employe (
+    NAS VARCHAR(20) PRIMARY KEY,
     hotel_ID INT,
-    CONSTRAINT fk_hotel_ID FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID)
+    role_ID INT,
+    CONSTRAINT fk_hotel_employe FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID),
+    CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
+);
+
+ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
+
+-- Création de la table Commodite
+CREATE TABLE Commodite (
+    com_ID INT PRIMARY KEY,
+    nom_com VARCHAR(100) UNIQUE
+);
+
+-- Création de la table Problem
+CREATE TABLE Problem (
+    ID INT PRIMARY KEY,
+    description TEXT
 );
 
 -- Création de la table Chambre
@@ -60,16 +89,15 @@ CREATE TABLE Chambre (
     CONSTRAINT fk_problem_chambre FOREIGN KEY (problem_ID) REFERENCES Problem(ID)
 );
 
--- Création de la table Commodite
-CREATE TABLE Commodite (
-    com_ID INT PRIMARY KEY,
-    nom_com VARCHAR(100) UNIQUE
-);
-
--- Création de la table Problem
-CREATE TABLE Problem (
+-- Création de la table Client
+CREATE TABLE Client (
     ID INT PRIMARY KEY,
-    description TEXT
+    NAS VARCHAR(20) UNIQUE,
+    role_ID INT,
+    date_enrg DATE,
+    CONSTRAINT fk_role_client FOREIGN KEY (role_ID) REFERENCES Role(role_ID),
+    CONSTRAINT fk_NAS FOREIGN KEY (NAS) REFERENCES Personne(NAS)
+    
 );
 
 -- Création de la table Reservation
@@ -85,23 +113,6 @@ CREATE TABLE Reservation (
     CONSTRAINT fk_chambre_reservation FOREIGN KEY (chambre_ID) REFERENCES Chambre(chambrel_ID)
 );
 
--- Création de la table Role
-CREATE TABLE Role (
-    role_ID INT PRIMARY KEY,
-    nom_role VARCHAR(100) UNIQUE
-);
-
--- Création de la table Client
-CREATE TABLE Client (
-    ID INT PRIMARY KEY,
-    NAS VARCHAR(20) UNIQUE,
-    role_ID INT,
-    date_enrg DATE,
-    CONSTRAINT fk_role_client FOREIGN KEY (role_ID) REFERENCES Role(role_ID),
-    CONSTRAINT fk_NAS FOREIGN KEY (NAS) REFERENCES Personne(NAS)
-    
-);
-
 -- Création de la table Check_in
 CREATE TABLE Check_in (
     reserve_ID INT,
@@ -110,14 +121,6 @@ CREATE TABLE Check_in (
     CONSTRAINT fk_employe_checkin FOREIGN KEY (employe_ID) REFERENCES Employe(NAS)
 );
 
--- Création de la table Employe
-CREATE TABLE Employe (
-    NAS VARCHAR(20) PRIMARY KEY,
-    hotel_ID INT,
-    role_ID INT,
-    CONSTRAINT fk_hotel_employe FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID),
-    CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
-);
 
 
 
@@ -373,6 +376,6 @@ BEGIN
     END IF;
     RETURN NEW;
 END;
-
+$$
 
 
