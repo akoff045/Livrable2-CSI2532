@@ -1,12 +1,12 @@
 -- Création de la table Address
 CREATE TABLE Address (
-    address_ID INT PRIMARY KEY,
+    address_ID SERIAL PRIMARY KEY,
     num VARCHAR(20),
     street VARCHAR(100),
     city VARCHAR(50),
     province VARCHAR(50),
     country VARCHAR(50),
-    code_post VARCHAR(10) CHECK (LENGTH(code_post) >= 5)
+    code_post VARCHAR(10) CHECK (LENGTH(code_post) >= 4)
 );
 
 -- Création de la table Personne
@@ -20,22 +20,22 @@ CREATE TABLE Personne (
 
 -- Création de la table Chaine
 CREATE TABLE Chaine (
-    chaine_ID INT PRIMARY KEY,
+    chaine_ID SERIAL PRIMARY KEY,
     nom_chaine VARCHAR(100) UNIQUE,
     email VARCHAR(100) UNIQUE,
-    tele_num INT,
+    tele_num BIGINT,
     hotel_ID INT
 );
 
 -- Création de la table Hotel
 CREATE TABLE Hotel (
-    hotel_ID INT PRIMARY KEY,
+    hotel_ID SERIAL PRIMARY KEY,
     chaine_ID INT,
     gestionnaire_ID VARCHAR(20),
     address_ID INT,
     nom_hotel VARCHAR(100) UNIQUE,
     rating FLOAT CHECK (rating BETWEEN 1 AND 5),
-    tele_num INT,
+    tele_num BIGINT,
     email VARCHAR(100) UNIQUE,
     chambre_num INT,
     chambre_ID INT,
@@ -60,11 +60,11 @@ CREATE TABLE Employe (
     CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
 );
 
-ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
+-- ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
 
 -- Création de la table Commodite
 CREATE TABLE Commodite (
-    com_ID INT PRIMARY KEY,
+    com_ID SERIAL PRIMARY KEY,
     nom_com VARCHAR(100) UNIQUE
 );
 
@@ -76,7 +76,7 @@ CREATE TABLE Problem (
 
 -- Création de la table Chambre
 CREATE TABLE Chambre (
-    chambrel_ID INT PRIMARY KEY,
+    chambrel_ID SERIAL PRIMARY KEY,
     hotel_ID INT,
     capacity INT,
     vue VARCHAR(100),
@@ -177,6 +177,14 @@ VALUES ('WiFi'),
        ('Climatisation'),
        ('Minibar'),
        ('Service en chambre');
+	   
+-- Insertion dans la table Problem
+INSERT INTO Problem (id, description)
+VALUES (1, 'unreliable wifi'),
+       (2, 'temperature is cold'),
+       (3, 'temperature is warm'),
+       (4, 'leaky faucet'),
+       (5, 'dim lights');
 
 -- Insertion des données dans la table Chaine
 INSERT INTO Chaine (nom_chaine, email, tele_num)
@@ -376,6 +384,6 @@ BEGIN
     END IF;
     RETURN NEW;
 END;
-$$
+$$ LANGUAGE plpgsql
 
 
