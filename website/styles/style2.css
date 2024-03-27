@@ -1,0 +1,232 @@
+html {
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: rgb(34, 157, 224);
+}
+
+a {
+  color: darkblue;
+}
+
+a:hover {
+  color: rgb(34, 157, 224);
+}
+
+.image-source:hover {
+  color: teal;
+}
+
+h1 {
+  font-size: 65px;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0;
+  color: rgb(34, 157, 224);
+  text-shadow: 3px 0px 1px rgb(255, 255, 255);
+  letter-spacing: 1px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.main-text {
+  font-size: 20px;
+  line-height: 2;
+  letter-spacing: 1px;
+}
+
+body {
+  height: 1000px;
+  width: 1200px;
+  margin: 0 auto;
+  background-color: rgb(202, 202, 202);
+  padding: 0 20px 20px 20px;
+  border: 5px solid black;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.selection {
+  display: inline-block;
+}
+
+.img-link {
+  text-align: center;
+}
+
+.bottom {
+  margin-top: 120px;
+}
+
+nav {
+  height: 110px;
+  flex: 100%;
+  display: flex;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 2;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(34, 157, 224);
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(188, 188, 188);
+  -webkit-transition: background 0.55s ease;
+  -moz-transition: background 0.55s ease;
+  -ms-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease;
+  transition: background 0.55s ease;
+}
+
+nav a:hover {
+  background-color: rgb(34, 157, 224);
+  color: rgb(202, 202, 202);
+}
+
+form {
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+form input#search,
+form input#password,
+form input#username,
+form input#name,
+form input#last,
+form input#address,
+form input#ssn,
+form input#phone {
+  width: 248px;
+  height: 68px;
+  background: rgb(188, 188, 188);
+  border: 1px solid black;
+  font-size: 14pt;
+  float: left;
+  padding-left: 10px;
+  border-radius: 0px;
+  -webkit-transition: background 0.55s ease;
+  -moz-transition: background 0.55s ease;
+  -ms-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease;
+  transition: background 0.55s ease;
+}
+
+form input#search:hover,
+form input#search:focus,
+form input#search:active,
+form input#password:hover,
+form input#password:focus,
+form input#password:active,
+form input#username:hover,
+form input#username:focus,
+form input#username:active,
+form input#name:hover,
+form input#name:focus,
+form input#name:active,
+form input#last:hover,
+form input#last:focus,
+form input#last:active,
+form input#phone:hover,
+form input#phone:focus,
+form input#phone:active,
+form input#ssn:hover,
+form input#ssn:focus,
+form input#ssn:active,
+form input#address:hover,
+form input#address:focus,
+form input#address:active {
+  outline: none;
+  background: rgb(34, 157, 224);
+  color: rgb(202, 202, 202);
+}
+
+form input#go {
+  width: 50px;
+  height: 68px;
+  color: rgb(34, 157, 224);
+  background-color: rgb(188, 188, 188);
+  font-size: 14pt;
+  border-radius: 0px;
+  border: 1px solid black;
+  -webkit-transition: background 0.55s ease;
+  -moz-transition: background 0.55s ease;
+  -ms-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease;
+  transition: background 0.55s ease;
+}
+
+form input#login {
+  width: 261px;
+  height: 28px;
+  color: rgb(34, 157, 224);
+  background-color: rgb(188, 188, 188);
+  font-size: 14pt;
+  border-radius: 0px;
+  border: 1px solid black;
+  -webkit-transition: background 0.55s ease;
+  -moz-transition: background 0.55s ease;
+  -ms-transition: background 0.55s ease;
+  -o-transition: background 0.55s ease;
+  transition: background 0.55s ease;
+}
+
+form input#go:hover,
+form input#login:hover {
+  background-color: rgb(34, 157, 224);
+  color: rgb(202, 202, 202);
+}
+
+::placeholder {
+  color: rgb(34, 157, 224);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: rgb(34, 157, 224);
+}
+
+::-ms-input-placeholder {
+  color: rgb(34, 157, 224);
+}
+
+input:focus::placeholder,
+input:hover::placeholder {
+  color: rgb(202, 202, 202);
+}
+
+video {
+  display: inline-block;
+  margin-left: 940px;
+  position: absolute;
+}
+
+header {
+  background-image: url(../images/banner.jpg);
+}
+
+footer {
+  margin-top: 550px;
+}
