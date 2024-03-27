@@ -37,7 +37,7 @@ h2 {
 }
 
 body {
-  height: 1000px;
+  height: 1400px;
   width: 1200px;
   margin: 0 auto;
   background-color: rgb(202, 202, 202);
@@ -118,7 +118,13 @@ form input#name,
 form input#last,
 form input#address,
 form input#ssn,
-form input#phone {
+form input#phone,
+form input#num,
+form input#street,
+form input#city,
+form input#province,
+form input#country,
+form input#zip {
   width: 248px;
   height: 68px;
   background: rgb(188, 188, 188);
@@ -155,9 +161,24 @@ form input#phone:active,
 form input#ssn:hover,
 form input#ssn:focus,
 form input#ssn:active,
-form input#address:hover,
-form input#address:focus,
-form input#address:active {
+form input#num:hover,
+form input#num:focus,
+form input#num:active,
+form input#street:hover,
+form input#street:focus,
+form input#street:active,
+form input#city:hover,
+form input#city:focus,
+form input#city:active,
+form input#province:hover,
+form input#province:focus,
+form input#province:active,
+form input#country:hover,
+form input#country:focus,
+form input#country:active,
+form input#zip:hover,
+form input#zip:focus,
+form input#zip:active {
   outline: none;
   background: rgb(34, 157, 224);
   color: rgb(202, 202, 202);
@@ -228,5 +249,10 @@ header {
 }
 
 footer {
-  margin-top: 550px;
+  margin-top: 950px;
+}
+
+#accountinfo {
+  font-weight: bold;
+  color: rgb(34, 157, 224);
 }
