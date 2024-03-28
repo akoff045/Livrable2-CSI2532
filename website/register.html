@@ -6,7 +6,6 @@
     <title>E-Hotels</title>
     <link rel="icon" href="favicon.ico" type="images/x-icon" />
     <meta name="description" content="Book an hotel online effortlessly." />
-
     <link rel="stylesheet" href="styles/style2.css" />
   </head>
   <body>
@@ -52,7 +51,9 @@
         <input type="text" id="last" placeholder="Last Name" />
       </form>
       <form>
-        <input type="text" id="username" placeholder="Username" />
+        <input type="text" id="username" placeholder="Username" required
+        oninvalid="this.setCustomValidity('Enter User Name Here')"
+        oninput="this.setCustomValidity('')"/>
       </form>
       <form>
         <input type="password" id="password" placeholder="Password" />
