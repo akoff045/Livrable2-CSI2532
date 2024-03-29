@@ -2,7 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+  })
+);
+
 const { Pool } = require("pg");
 const bodyParser = require("body-parser");
 
@@ -11,8 +17,8 @@ app.use(bodyParser.json());
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "",
-  password: "",
+  database: "csi2532",
+  password: "V19des&D20",
   port: 5432,
 });
 
@@ -77,6 +83,43 @@ app.post("/create_client", (req, res) => {
     }
   );
 });
+
+let currentUser = null;
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  pool.query(
+    "SELECT * FROM client WHERE username = $1 AND password = $2",
+    [username, password],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+
+      if (results.rows.length > 0) {
+        currentUser = results.rows[0];
+        res.json({ success: true });
+      } else {
+        res.status(400).json({ success: false });
+      }
+    }
+  );
+});
+
+app.get("/check-login", (req, res) => {
+  if (currentUser) {
+    res.json({ loggedIn: true });
+  } else {
+    res.json({ loggedIn: false });
+  }
+});
+
+app.get("/logout", (req, res) => {
+  currentUser = null;
+  res.json({ success: true });
+});
+
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

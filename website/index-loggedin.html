@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>E-Hotels</title>
+    <link rel="icon" href="favicon.ico" type="images/x-icon" />
+    <meta name="description" content="Book an hotel online effortlessly." />
+
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/main.js" defer></script>
+  </head>
+  <body>
+    <noscript>
+      <style>
+        body * {
+          display: none;
+        }
+        .script {
+          display: block;
+        }
+        html {
+          margin: 0;
+          height: 100%;
+          overflow: hidden;
+        }
+      </style>
+      <h2 class="script">
+        This site requires JavaScript to function properly, please enable it in
+        your browser settings.
+      </h2>
+    </noscript>
+    <header>
+      <h1>E-Hotels</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index-loggedin.html">Home</a></li>
+        <li><a href="book-loggedin.html">Book</a></li>
+        <li><a href="logout.html">Logout</a></li>
+        <form>
+          <input type="search" name="q" id="search" placeholder="Search..." />
+          <input type="submit" id="go" value="Go!" />
+        </form>
+      </ul>
+    </nav>
+    <img
+      src="images/hotel1.jpg"
+      alt="Image of various hotel resorts."
+      height="203"
+      width="271"
+      title="click to show next image"
+    />
+    <h2>Welcome to E-Hotels! Book your dream hotel room in a few clicks.</h2>
+    <p class="main-text">Our current top 3:</p>
+    <ul class="main-text">
+      <li>room 1</li>
+      <li>room 2</li>
+      <li>room 3</li>
+    </ul>
+    <p class="main-text"></p>
+    <div class="img-link">
+      <a
+        href="book-loggedin.html"
+        title="See our full selection"
+      >
+        <img
+          class="selection"
+          src="images/hotel3.jpg"
+          alt="Hotel resort with pools"
+        />
+      </a>
+    </div>
+    <p class="bottom">Get started:</p>
+    <ol>
+      <li>
+        <p>Registration complete!</p>
+      </li>
+      <li>
+        <a href="book-loggedin.html" title="Book a room">Book a room</a>
+      </li>
+    </ol>
+    <footer>
+      <hr />
+      <p>Copyright © 2024 E-Hotels. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

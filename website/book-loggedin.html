@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>E-Hotels</title>
+    <link rel="icon" href="favicon.ico" type="images/x-icon" />
+    <meta name="description" content="Book an hotel online effortlessly." />
+
+    <link rel="stylesheet" href="styles/style3.css" />
+  </head>
+  <body>
+    <noscript>
+      <style>
+        body * {
+          display: none;
+        }
+        .script {
+          display: block;
+        }
+        html {
+          margin: 0;
+          height: 100%;
+          overflow: hidden;
+        }
+      </style>
+      <h2 class="script">
+        This site requires JavaScript to function properly, please enable it in
+        your browser settings.
+      </h2>
+    </noscript>
+    <header>
+      <h1>E-Hotels</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index-loggedin.html">Home</a></li>
+        <li><a href="book-loggedin.html">Book</a></li>
+        <li><a href="logout.html">Logout</a></li>
+        <form>
+          <input type="search" name="q" id="search" placeholder="Search..." />
+          <input type="submit" id="go" value="Go!" />
+        </form>
+      </ul>
+    </nav>
+    <div style="width: 21.5%; height: 100px; margin: 0 auto; margin-top: 50px">
+      <label for="startDate">Select a Start Date:</label>
+      <input type="date" id="startDate" />
+
+      <br />
+
+      <label for="endDate">Select an End Date:</label>
+      <input type="date" id="endDate" />
+
+      <br />
+
+      <label for="hotels">Choose a hotel:</label>
+
+      <select name="hotel" id="hotel">
+        <option value="hotel1">hotel1</option>
+        <option value="hotel2">hotel2</option>
+        <option value="hotel3">hotel3</option>
+        <option value="hotel4">hotel4</option>
+        <option value="hotel5">hotel5</option>
+      </select>
+
+      <br />
+      <label for="prices">Price Range:</label>
+
+      <select name="price" id="price">
+        <option value="200">> 200</option>
+        <option value="400">200 > 400</option>
+        <option value="600">400 > 600</option>
+        <option value="800">600 > 800</option>
+        <option value="1000">800 > 1000</option>
+      </select>
+
+      <br />
+      <label for="capacity">Room Capacity:</label>
+
+      <select name="capacity" id="capacity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      <br />
+      <label for="size">Room Size:</label>
+
+      <select name="size" id="size">
+        <option value="100">100-200 square feet</option>
+        <option value="300">300-400 square feet</option>
+        <option value="500">500-600 square feet</option>
+        <option value="700">700-800 square feet</option>
+        <option value="900">900-1000 square feet</option>
+        <option value="1000">> 1000 square feet</option>
+      </select>
+
+      <br />
+      <label for="type">Hotel Type:</label>
+
+      <select name="type" id="type">
+        <option value="1star">1-star hotel</option>
+        <option value="2star">2-star hotel</option>
+        <option value="3star">3-star hotel</option>
+        <option value="4star">4-star hotel</option>
+        <option value="5star">5-star hotel</option>
+      </select>
+
+      <br />
+      <label for="number">Number of Rooms in Hotel:</label>
+
+      <select name="number" id="number">
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="150">150</option>
+        <option value="200">200</option>
+        <option value="250">250</option>
+      </select>
+
+      <br/>
+      <input type="submit" id="go" value="Go!" />
+    </div>
+    <footer>
+      <hr />
+      <p>Copyright © 2024 E-Hotels. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
