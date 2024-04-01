@@ -376,16 +376,23 @@ CREATE INDEX idx_date_start_reservation ON Reservation (date_start);-- Index sur
 CREATE INDEX idx_NAS_client ON Client (NAS);--Index sur le NAS dans la table Client pour accélérer les recherches de réservations par client
 
 
+-- REQUÊTES
 
--- Déclencheur pour assurer l'intégrité référentielle lors de l'insertion dans la table Hotel
-CREATE OR REPLACE FUNCTION check_hotel_address()
-RETURNS TRIGGER AS $$
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM Address WHERE address_ID = NEW.address_ID) THEN
-        RAISE EXCEPTION 'Address does not exist';
-    END IF;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql
+SELECT 
+    c.chambrel_ID,
+    h.nom_hotel,
+    c.capacity,
+    c.prix
+FROM 
+    Chambre c
+JOIN 
+    Hotel h ON c.hotel_ID = h.hotel_ID
+LEFT JOIN 
+    Reservation r ON c.chambrel_ID = r.chambre_ID
+WHERE 
+    r.reserve_ID IS NULL;
+
+
+
 
 

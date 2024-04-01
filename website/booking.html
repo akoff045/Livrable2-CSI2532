@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <title>E-Hotels - Booking</title>
+  <link rel="icon" href="favicon.ico" type="images/x-icon" />
+  <meta name="description" content="Book a hotel room online effortlessly." />
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="scripts/main.js" defer></script>
+</head>
+<body>
+  <noscript>
+    <style>
+      body * {
+        display: none;
+      }
+      .script {
+        display: block;
+      }
+      html {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
+    <h2 class="script">
+      This site requires JavaScript to function properly, please enable it in
+      your browser settings.
+    </h2>
+  </noscript>
+  <header>
+    <h1>E-Hotels</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="book.html">Book</a></li>
+      <li><a href="login.html">Login</a></li>
+      <form>
+        <input type="search" name="q" id="search" placeholder="Search..." />
+        <input type="submit" id="go" value="Go!" />
+      </form>
+    </ul>
+  </nav>
+  <div class="booking-form">
+    <h2>Book a Room</h2>
+    <form id="bookingForm">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required />
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required />
+
+      <label for="hotel">Choose a Hotel:</label>
+      <select id="hotel" name="hotel" required>
+        <option value="hotel1">Hotel 1</option>
+        <option value="hotel2">Hotel 2</option>
+        <option value="hotel3">Hotel 3</option>
+        <!-- Ajoutez d'autres options pour les hôtels disponibles -->
+      </select>
+
+      <label for="roomType">Room Type:</label>
+      <select id="roomType" name="roomType" required>
+        <option value="single">Single</option>
+        <option value="double">Double</option>
+        <option value="suite">Suite</option>
+        <!-- Ajoutez d'autres options pour les types de chambre disponibles -->
+      </select>
+
+      <button type="submit">Search Rooms</button>
+    </form>
+  </div>
+  <div id="roomResults" class="room-results"></div>
+  <footer>
+    <hr />
+    <p>Copyright © 2024 E-Hotels. All rights reserved.</p>
+  </footer>
+</body>
+</html>
