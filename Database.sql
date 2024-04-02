@@ -91,7 +91,7 @@ CREATE TABLE Chambre (
 
 -- Création de la table Client
 CREATE TABLE Client (
-    ID INT PRIMARY KEY,
+    ID SERIAL PRIMARY KEY,
     NAS VARCHAR(20) UNIQUE,
     role_ID INT,
     date_enrg DATE,
@@ -104,7 +104,7 @@ CREATE TABLE Client (
 
 -- Création de la table Reservation
 CREATE TABLE Reservation (
-    reserve_ID INT PRIMARY KEY,
+    reserve_ID SERIAL PRIMARY KEY,
     client_ID INT,
     chambre_ID INT,
     date_start DATE,
