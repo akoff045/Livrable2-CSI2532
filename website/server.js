@@ -13,11 +13,12 @@ const { Pool } = require("pg");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "csi2532",
+  database: "csi2532v2",
   password: "V19des&D20",
   port: 5432,
 });
@@ -120,6 +121,47 @@ app.get("/logout", (req, res) => {
   res.json({ success: true });
 });
 
+app.post("/book", function (req, res) {
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
+  var hotel = req.body.hotel;
+  var price = req.body.price;
+  var capacity = req.body.capacity;
+  var type = req.body.type;
+
+  pool.query(
+    "SELECT * FROM chambre WHERE hotel_id IN (SELECT hotel_id FROM hotel WHERE chaine_id = $1 AND rating <= $4) AND prix <= $2 AND capacity = $3 AND chambrel_id NOT IN (SELECT chambre_id FROM reservation WHERE date_start <= $6 AND date_end >= $5)",
+    [hotel, price, capacity, type, startDate, endDate],
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error in transaction");
+      } else {
+        res.send(result.rows);
+      }
+    }
+  );
+});
+
+app.post("/reserve", function (req, res) {
+  var client_id = currentUser.id;
+  var chambre_id = req.body.chambre_id;
+  var date_start = req.body.date_start;
+  var date_end = req.body.date_end;
+
+  pool.query(
+    "INSERT INTO reservation (client_id, chambre_id, date_start, date_end) VALUES ($1, $2, $3, $4)",
+    [client_id, chambre_id, date_start, date_end],
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error in transaction");
+      } else {
+        res.send(result.rows);
+      }
+    }
+  );
+});
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");

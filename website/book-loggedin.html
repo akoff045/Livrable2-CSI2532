@@ -45,30 +45,30 @@
     </nav>
     <div style="width: 21.5%; height: 100px; margin: 0 auto; margin-top: 50px">
       <label for="startDate">Select a Start Date:</label>
-      <input type="date" id="startDate" />
+      <input type="date" id="startDate" required/>
 
       <br />
 
       <label for="endDate">Select an End Date:</label>
-      <input type="date" id="endDate" />
+      <input type="date" id="endDate" required/>
 
       <br />
 
       <label for="hotels">Choose a hotel:</label>
 
       <select name="hotel" id="hotel">
-        <option value="hotel1">hotel1</option>
-        <option value="hotel2">hotel2</option>
-        <option value="hotel3">hotel3</option>
-        <option value="hotel4">hotel4</option>
-        <option value="hotel5">hotel5</option>
+        <option value="1">hotel1</option>
+        <option value="2">hotel2</option>
+        <option value="3">hotel3</option>
+        <option value="4">hotel4</option>
+        <option value="5">hotel5</option>
       </select>
 
       <br />
       <label for="prices">Price Range:</label>
 
       <select name="price" id="price">
-        <option value="200">> 200</option>
+        <option value="200">< 200</option>
         <option value="400">200 > 400</option>
         <option value="600">400 > 600</option>
         <option value="800">600 > 800</option>
@@ -103,11 +103,11 @@
       <label for="type">Hotel Type:</label>
 
       <select name="type" id="type">
-        <option value="1star">1-star hotel</option>
-        <option value="2star">2-star hotel</option>
-        <option value="3star">3-star hotel</option>
-        <option value="4star">4-star hotel</option>
-        <option value="5star">5-star hotel</option>
+        <option value="1">1-star hotel</option>
+        <option value="2">2-star hotel</option>
+        <option value="3">3-star hotel</option>
+        <option value="4">4-star hotel</option>
+        <option value="5">5-star hotel</option>
       </select>
 
       <br />
@@ -122,8 +122,9 @@
       </select>
 
       <br/>
-      <input type="submit" id="go" value="Go!" />
+      <input type="submit" id="go-book" value="Go!" />
     </div>
+    <script src="scripts/book.js" defer></script>
     <footer>
       <hr />
       <p>Copyright © 2024 E-Hotels. All rights reserved.</p>
