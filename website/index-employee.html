@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>E-Hotels</title>
+    <link rel="icon" href="favicon.ico" type="images/x-icon" />
+    <meta name="description" content="Book an hotel online effortlessly." />
+
+    <link rel="stylesheet" href="styles/style3.css" />
+  </head>
+  <body>
+    <noscript>
+      <style>
+        body * {
+          display: none;
+        }
+        .script {
+          display: block;
+        }
+        html {
+          margin: 0;
+          height: 100%;
+          overflow: hidden;
+        }
+      </style>
+      <h2 class="script">
+        This site requires JavaScript to function properly, please enable it in
+        your browser settings.
+      </h2>
+    </noscript>
+    <header>
+      <h1>E-Hotels</h1>
+    </header>
+    <nav>
+      <ul>
+        <li><a href="index-loggedin.html">Home</a></li>
+        <li><a href="book-loggedin.html">Book</a></li>
+        <li><a href="logout.html">Logout</a></li>
+        <form>
+          <input type="search" name="q" id="search" placeholder="Search..." />
+          <input type="submit" id="go" value="Go!" />
+        </form>
+      </ul>
+    </nav>
+    <div style="width: 21.5%; height: 100px; margin: 0 auto; margin-top: 50px">
+      <label for="startDate">Select a Start Date:</label>
+      <input type="date" id="startDate" required />
+
+      <br />
+
+      <label for="endDate">Select an End Date:</label>
+      <input type="date" id="endDate" required />
+
+      <br />
+
+      <label for="NAS">NAS of client:</label>
+      <input type="text" id="userNas" placeholder="NAS" required/>
+      <br />
+
+      <input type="submit" id="go-book" value="Go!" />
+    </div>
+    <script src="scripts/book_employee.js" defer></script>
+    <footer>
+      <hr />
+      <p>Copyright © 2024 E-Hotels. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

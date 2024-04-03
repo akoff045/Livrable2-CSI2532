@@ -12,7 +12,11 @@ document.getElementById("login").addEventListener("click", function (event) {
     if (xhr.status === 200) {
       var data = JSON.parse(xhr.responseText);
       if (data.success) {
-        window.location.href = "book-loggedin.html";
+        if (data.userType === "client") {
+          window.location.href = "book-loggedin.html";
+        } else if (data.userType === "employee") {
+          window.location.href = "index-employee.html";
+        }
         checkLoginStatus();
       } else {
         document.getElementById("username").style.borderColor = "red";
@@ -47,4 +51,4 @@ function checkLoginStatus() {
   xhr.send();
 }
 
-checkLoginStatus()
+checkLoginStatus();

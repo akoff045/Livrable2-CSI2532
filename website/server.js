@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const pool = new Pool({
-  user: "postgres",
+  user: "",
   host: "localhost",
-  database: "csi2532v2",
-  password: "V19des&D20",
+  database: "",
+  password: "",
   port: 5432,
 });
 
@@ -100,9 +100,24 @@ app.post("/login", (req, res) => {
 
       if (results.rows.length > 0) {
         currentUser = results.rows[0];
-        res.json({ success: true });
+        res.json({ success: true, userType: "client" });
       } else {
-        res.status(400).json({ success: false });
+        pool.query(
+          "SELECT * FROM employe WHERE username = $1 AND password = $2",
+          [username, password],
+          (error, results) => {
+            if (error) {
+              throw error;
+            }
+
+            if (results.rows.length > 0) {
+              currentUser = results.rows[0];
+              res.json({ success: true, userType: "employee" });
+            } else {
+              res.status(400).json({ success: false });
+            }
+          }
+        );
       }
     }
   );
@@ -143,6 +158,39 @@ app.post("/book", function (req, res) {
   );
 });
 
+app.post("/book_employee", function (req, res) {
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
+  var hotel = currentUser.hotel_id;
+  var userNas = req.body.userNas;
+
+  pool.query(
+    "SELECT * FROM client WHERE nas = $1",
+    [userNas],
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error in transaction");
+      } else if (result.rows.length === 0) {
+        res.status(400).send("No client found with the provided NAS");
+      } else {
+        pool.query(
+          "SELECT * FROM chambre WHERE hotel_id = $1 AND chambrel_id NOT IN (SELECT chambre_id FROM reservation WHERE date_start <= $3 AND date_end >= $2)",
+          [hotel, startDate, endDate],
+          function (err, result) {
+            if (err) {
+              console.log(err);
+              res.status(500).send("Error in transaction");
+            } else {
+              res.send(result.rows);
+            }
+          }
+        );
+      }
+    }
+  );
+});
+
 app.post("/reserve", function (req, res) {
   var client_id = currentUser.id;
   var chambre_id = req.body.chambre_id;
@@ -158,6 +206,39 @@ app.post("/reserve", function (req, res) {
         res.status(500).send("Error in transaction");
       } else {
         res.send(result.rows);
+      }
+    }
+  );
+});
+
+app.post("/reserve_employee", function (req, res) {
+  var userNas = req.body.userNas;
+  var chambre_id = req.body.chambre_id;
+  var date_start = req.body.date_start;
+  var date_end = req.body.date_end;
+
+  pool.query(
+    "SELECT id FROM client WHERE nas = $1",
+    [userNas],
+    function (err, result) {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error in transaction");
+      } else {
+        var client_id = result.rows[0].id;
+
+        pool.query(
+          "INSERT INTO reservation (client_id, chambre_id, date_start, date_end) VALUES ($1, $2, $3, $4)",
+          [client_id, chambre_id, date_start, date_end],
+          function (err, result) {
+            if (err) {
+              console.log(err);
+              res.status(500).send("Error in transaction");
+            } else {
+              res.send(result.rows);
+            }
+          }
+        );
       }
     }
   );
