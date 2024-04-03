@@ -62,6 +62,9 @@ CREATE TABLE Employe (
     CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
 );
 
+ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
+
+
 -- Création de la table Commodite
 CREATE TABLE Commodite (
     com_ID SERIAL PRIMARY KEY,
@@ -273,7 +276,10 @@ VALUES ('123', 'Rue de la Paix', 'Paris', 'Île-de-France', 'France', '75001'),
 ('3333', 'Karl Johans gate', 'Oslo', 'Oslo', 'Norway', '0154'),
 ('3434', 'Drottninggatan', 'Stockholm', 'Stockholm', 'Sweden', '111 51'),
 ('3535', 'Leoforos Vouliagmenis', 'Athens', 'Attica', 'Greece', '117 41'),
-('3636', 'Dam Square', 'Amsterdam', 'North Holland', 'Netherlands', '1012');
+('3636', 'Dam Square', 'Amsterdam', 'North Holland', 'Netherlands', '1012'),
+('1000', 'La Rambla', 'Barcelona', 'Catalonia', 'Spain', '08002'),
+('1001', 'Via Condotti', 'Rome', 'Lazio', 'Italy', '00187'),
+('1002', 'Boulevard Saint-Germain', 'Paris', 'Île-de-France', 'France', '75005');
 
 -- Insertion des données dans la table Personne
 INSERT INTO Personne (NAS, nom, prenom, address_ID)
@@ -328,7 +334,63 @@ VALUES
     ('444444446', 'Long', 'Lucas', 48),
     ('555555557', 'Scott', 'Scarlett', 49),
     ('666666668', 'Kelly', 'Jason', 50);
-
+	
+INSERT INTO Role (role_id, nom_role)
+VALUES (1, 'gestionnaire');
+	
+INSERT INTO
+    employe (NAS, role_id)
+VALUES
+    ('123456789', 1),
+    ('987654321', 1),
+    ('456789123', 1),
+    ('654321987', 1),
+    ('789123456', 1),
+    ('321987654', 1),
+    ('111111111', 1),
+    ('222222222', 1),
+    ('333333333', 1),
+    ('444444444', 1),
+    ('555555555', 1),
+    ('666666666', 1),
+    ('777777777', 1),
+    ('888888888', 1),
+    ('999999999', 1),
+    ('000000000', 1),
+    ('121212121', 1),
+    ('232323232', 1),
+    ('343434343', 1),
+    ('454545454', 1),
+    ('565656565', 1),
+    ('676767676', 1),
+    ('787878787', 1),
+    ('898989898', 1),
+    ('010101010', 1),
+    ('111111112', 1),
+    ('222222223', 1),
+    ('333333334', 1),
+    ('444444445', 1),
+    ('555555556', 1),
+    ('666666667', 1),
+    ('777777778', 1),
+    ('888888889', 1),
+    ('999999990', 1),
+    ('000000001', 1),
+    ('121212122', 1),
+    ('232323233', 1),
+    ('343434344', 1),
+    ('454545455', 1),
+    ('565656566', 1),
+    ('676767677', 1),
+    ('787878788', 1),
+    ('898989899', 1),
+    ('010101012', 1),
+    ('111111113', 1),
+    ('222222224', 1),
+    ('333333335', 1),
+    ('444444446', 1),
+    ('555555557', 1),
+    ('666666668', 1);
 
 -- Insertion dans la table Commodite
 INSERT INTO Commodite (nom_com)
