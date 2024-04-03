@@ -62,8 +62,6 @@ CREATE TABLE Employe (
     CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
 );
 
--- ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
-
 -- Création de la table Commodite
 CREATE TABLE Commodite (
     com_ID SERIAL PRIMARY KEY,
@@ -227,7 +225,7 @@ VALUES ('123', 'Rue de la Paix', 'Paris', 'Île-de-France', 'France', '75001'),
 ('2100', 'Schloss Neuschwanstein', 'Füssen', 'Bavaria', 'Germany', '87645'),
 ('2200', 'The Alhambra', 'Granada', 'Andalusia', 'Spain', '18009'),
 ('2300', 'Red Square', 'Moscow', NULL, 'Russia', '109012'),
-('2400', 'The Acropolis', 'Athens', NULL, 'Greece', '105 58');
+('2400', 'The Acropolis', 'Athens', NULL, 'Greece', '105 58'),
 ('123', 'Rue de la République', 'Paris', 'Île-de-France', 'France', '75001'),
 ('456', 'Main Street', 'New York', 'New York', 'USA', '10001'),
 ('789', 'Unter den Linden', 'Berlin', 'Berlin', 'Germany', '10117'),
