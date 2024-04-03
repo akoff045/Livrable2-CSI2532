@@ -56,6 +56,8 @@ CREATE TABLE Employe (
     NAS VARCHAR(20) PRIMARY KEY,
     hotel_ID INT,
     role_ID INT,
+    username VARCHAR(20) UNIQUE,
+    password VARCHAR,
     CONSTRAINT fk_hotel_employe FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID),
     CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
 );
@@ -93,10 +95,9 @@ CREATE TABLE Chambre (
 CREATE TABLE Client (
     ID SERIAL PRIMARY KEY,
     NAS VARCHAR(20) UNIQUE,
-    role_ID INT,
-    date_enrg DATE,
     username VARCHAR(20) UNIQUE,
     password VARCHAR,
+    date_enrg DATE,
     CONSTRAINT fk_NAS FOREIGN KEY (NAS) REFERENCES Personne(NAS)
     
 );
