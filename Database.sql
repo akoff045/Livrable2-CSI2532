@@ -514,12 +514,7 @@ JOIN Client ON Reservation.client_ID = Client.ID
 JOIN Chambre ON Reservation.chambre_ID = Chambre.chambrel_ID
 JOIN Hotel ON Chambre.hotel_ID = Hotel.hotel_ID;
 
-CREATE VIEW Chambres AS
-SELECT c.chambrel_ID, h.nom_hotel, c.capacity, c.prix
-FROM Chambre c
-JOIN Hotel h ON c.hotel_ID = h.hotel_ID
-LEFT JOIN Reservation r ON c.chambrel_ID = r.chambre_ID
-WHERE r.reserve_ID IS NULL AND h.nom_hotel = 'Nom_de_l_hotel';
+
 
 
 
