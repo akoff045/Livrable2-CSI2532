@@ -62,6 +62,7 @@ CREATE TABLE Employe (
     CONSTRAINT fk_role_employe FOREIGN KEY (role_ID) REFERENCES Role(role_ID)
 );
 
+
 -- Création de la table Commodite
 CREATE TABLE Commodite (
     com_ID SERIAL PRIMARY KEY,
@@ -273,7 +274,10 @@ VALUES ('123', 'Rue de la Paix', 'Paris', 'Île-de-France', 'France', '75001'),
 ('3333', 'Karl Johans gate', 'Oslo', 'Oslo', 'Norway', '0154'),
 ('3434', 'Drottninggatan', 'Stockholm', 'Stockholm', 'Sweden', '111 51'),
 ('3535', 'Leoforos Vouliagmenis', 'Athens', 'Attica', 'Greece', '117 41'),
-('3636', 'Dam Square', 'Amsterdam', 'North Holland', 'Netherlands', '1012');
+('3636', 'Dam Square', 'Amsterdam', 'North Holland', 'Netherlands', '1012'),
+('1000', 'La Rambla', 'Barcelona', 'Catalonia', 'Spain', '08002'),
+('1001', 'Via Condotti', 'Rome', 'Lazio', 'Italy', '00187'),
+('1002', 'Boulevard Saint-Germain', 'Paris', 'Île-de-France', 'France', '75005');
 
 -- Insertion des données dans la table Personne
 INSERT INTO Personne (NAS, nom, prenom, address_ID)
@@ -328,7 +332,9 @@ VALUES
     ('444444446', 'Long', 'Lucas', 48),
     ('555555557', 'Scott', 'Scarlett', 49),
     ('666666668', 'Kelly', 'Jason', 50);
-
+	
+INSERT INTO Role (role_id, nom_role)
+VALUES (1, 'gestionnaire');
 
 -- Insertion dans la table Commodite
 INSERT INTO Commodite (nom_com)
@@ -463,6 +469,63 @@ VALUES (33, 2, 'Vue sur la ville', NULL, 1, 1, 100),
        (34, 4, 'Vue sur le jardin', NULL, 4, 4, 110),
        (35, 10, 'Sans vue', NULL, 5, 5, 80),
        (35, 6, 'Vue panoramique', NULL, 1, 2, 200);
+
+
+INSERT INTO
+    employe (NAS, role_id, hotel_id)
+VALUES
+    ('123456789', 1, 1),
+    ('987654321', 1, 2),
+    ('456789123', 1, 3),
+    ('654321987', 1, 4),
+    ('789123456', 1, 5),
+    ('321987654', 1, 6),
+    ('111111111', 1, 7),
+    ('222222222', 1, 8),
+    ('333333333', 1, 9),
+    ('444444444', 1, 10),
+    ('555555555', 1, 11),
+    ('666666666', 1, 12),
+    ('777777777', 1, 13),
+    ('888888888', 1, 14),
+    ('999999999', 1, 15),
+    ('000000000', 1, 16),
+    ('121212121', 1, 17),
+    ('232323232', 1, 18),
+    ('343434343', 1, 19),
+    ('454545454', 1, 20),
+    ('565656565', 1, 21),
+    ('676767676', 1, 22),
+    ('787878787', 1, 23),
+    ('898989898', 1, 24),
+    ('010101010', 1, 25),
+    ('111111112', 1, 26),
+    ('222222223', 1, 27),
+    ('333333334', 1, 28),
+    ('444444445', 1, 29),
+    ('555555556', 1, 30),
+    ('666666667', 1, 31),
+    ('777777778', 1, 32),
+    ('888888889', 1, 33),
+    ('999999990', 1, 34),
+    ('000000001', 1, 35),
+    ('121212122', 1, 36),
+    ('232323233', 1, 37),
+    ('343434344', 1, 38),
+    ('454545455', 1, 39),
+    ('565656566', 1, 40),
+    ('676767677', 1, NULL),
+    ('787878788', 1, NULL),
+    ('898989899', 1, NULL),
+    ('010101012', 1, NULL),
+    ('111111113', 1, NULL),
+    ('222222224', 1, NULL),
+    ('333333335', 1, NULL),
+    ('444444446', 1, NULL),
+    ('555555557', 1, NULL),
+    ('666666668', 1, NULL);
+
+ALTER TABLE Hotel ADD CONSTRAINT fk_gestionnaire_hotel FOREIGN KEY (gestionnaire_ID) REFERENCES Employe(NAS);
 
 
 
