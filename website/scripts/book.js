@@ -6,6 +6,7 @@ document.getElementById("go-book").addEventListener("click", function (event) {
   var price = document.getElementById("price").value;
   var capacity = document.getElementById("capacity").value;
   var type = document.getElementById("type").value;
+  var size = document.getElementById("size").value;
 
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "http://127.0.0.1:3000/book", true);
@@ -34,6 +35,6 @@ document.getElementById("go-book").addEventListener("click", function (event) {
   };
 
   xhr.send(
-    `startDate=${startDate}&endDate=${endDate}&hotel=${hotel}&price=${price}&capacity=${capacity}&type=${type}`
+    `startDate=${startDate}&endDate=${endDate}&hotel=${hotel}&price=${price}&capacity=${capacity}&type=${type}&size=${size}`
   );
 });

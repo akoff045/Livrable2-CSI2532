@@ -23,6 +23,11 @@ function validateNum(num) {
   return regex.test(num) ? "" : "Please enter a valid number";
 }
 
+function validateNas(nas) {
+  var regex = /^\d{9}$/;
+  return regex.test(nas) ? "" : "Please enter a valid nas";
+}
+
 function validateZip(zip) {
   var regex = /^(?=.*[\d])[\d\s]{4,10}$/;
   return regex.test(zip) ? "" : "Please enter a valid zip code";
@@ -79,7 +84,7 @@ document.getElementById("login").addEventListener("click", function (event) {
           errorMessage = validatePassword(data[field]);
           break;
         case "ssn":
-          errorMessage = validateNum(data[field]);
+          errorMessage = validateNas(data[field]);
           break;
         case "num":
           errorMessage = validateNum(data[field]);

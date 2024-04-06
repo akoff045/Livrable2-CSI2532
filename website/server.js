@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const pool = new Pool({
-  user: "",
+  user: "postgres",
   host: "localhost",
   database: "",
   password: "",
@@ -143,10 +143,11 @@ app.post("/book", function (req, res) {
   var price = req.body.price;
   var capacity = req.body.capacity;
   var type = req.body.type;
+  var size = req.body.size
 
   pool.query(
-    "SELECT * FROM chambre WHERE hotel_id IN (SELECT hotel_id FROM hotel WHERE chaine_id = $1 AND rating <= $4) AND prix <= $2 AND capacity = $3 AND chambrel_id NOT IN (SELECT chambre_id FROM reservation WHERE date_start <= $6 AND date_end >= $5)",
-    [hotel, price, capacity, type, startDate, endDate],
+    "SELECT * FROM chambre WHERE hotel_id IN (SELECT hotel_id FROM hotel WHERE chaine_id = $1 AND rating <= $4) AND prix <= $2 AND capacity = $3 AND superficie <= $7 AND chambrel_id NOT IN (SELECT chambre_id FROM reservation WHERE date_start <= $6 AND date_end >= $5)",
+    [hotel, price, capacity, type, startDate, endDate, size],
     function (err, result) {
       if (err) {
         console.log(err);
