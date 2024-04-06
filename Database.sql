@@ -85,6 +85,7 @@ CREATE TABLE Chambre (
     com_ID INT,
     problem_ID INT,
     prix INT,
+    superficie INT,
     CONSTRAINT fk_hotel_chambre FOREIGN KEY (hotel_ID) REFERENCES Hotel(hotel_ID),
     CONSTRAINT fk_com_chambre FOREIGN KEY (com_ID) REFERENCES Commodite(com_ID),
     CONSTRAINT fk_problem_chambre FOREIGN KEY (problem_ID) REFERENCES Problem(ID)
@@ -373,13 +374,13 @@ VALUES (1, '123456789', 51, 'Hotel_1A', 4.5, 1234567891, 'hotel1a@example.com', 
        (1, '222222222', 58, 'Hôtel 8A', 4.8, 1234567898, 'hotel8A@example.com', 9, 8);
 
 -- Insertion des chambres pour les hôtels de la Chaîne 1
-INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix)
-VALUES (1, 2, 'Vue_ville', NULL, 1, 1, 100),
-       (1, 4, 'Vue_mer', NULL, 2, 2, 150),
-       (2, 3, 'Vue sur la montagne', NULL, 3, 3, 120),
-       (2, 5, 'Vue sur le jardin', NULL, 4, 4, 110),
-       (3, 1, 'Sans vue', NULL, 5, 5, 80),
-       (3, 8, 'Vue panoramique', NULL, 1, 2, 200);
+INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix, superficie)
+VALUES (1, 2, 'Vue_ville', NULL, 1, 1, 100, 20),
+       (1, 4, 'Vue_mer', NULL, 2, 2, 150, 30),
+       (2, 3, 'Vue sur la montagne', NULL, 3, 3, 120, 25),
+       (2, 5, 'Vue sur le jardin', NULL, 4, 4, 110, 28),
+       (3, 1, 'Sans vue', NULL, 5, 5, 80, 15),
+       (3, 8, 'Vue panoramique', NULL, 1, 2, 200, 35);
 
 -- Insertion des hôtels pour la Chaîne 2
 INSERT INTO Hotel (chaine_ID, gestionnaire_ID, address_ID, nom_hotel, rating, tele_num, email, chambre_num, chambre_ID)
@@ -393,23 +394,23 @@ VALUES (2, '333333333', 59, 'Hotel_1B', 4.4, 2345678902, 'hotel1b@example.com', 
        (2, '000000000', 66, 'Hôtel 8B', 4.5, 2345678909, 'hotel8B@example.com', 9, 16);
 
 -- Insertion des chambres pour les hôtels de la Chaîne 2
-INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix)
-VALUES (9, 2, 'Vue sur la ville', NULL, 1, 1, 100),
-       (9, 4, 'Vue sur la mer', NULL, 2, 2, 150),
-       (10, 3, 'Vue sur la montagne', NULL, 3, 3, 120),
-       (10, 2, 'Vue sur le jardin', NULL, 4, 4, 110),
-       (11, 1, 'Sans vue', NULL, 5, 5, 80),
-       (11, 5, 'Vue panoramique', NULL, 1, 2, 200),
-       (12, 4, 'Vue sur le lac', NULL, 2, 3, 140),
-       (12, 3, 'Vue sur la rivière', NULL, 3, 4, 130),
-       (13, 2, 'Vue sur la plage', NULL, 4, 5, 100),
-       (13, 5, 'Vue sur le parc', NULL, 5, 1, 180),
-       (14, 3, 'Vue sur la forêt', NULL, 1, 2, 120),
-       (14, 4, 'Vue sur la piscine', NULL, 2, 3, 150),
-       (15, 2, 'Vue sur le port', NULL, 3, 4, 110),
-       (15, 5, 'Vue sur la montagne', NULL, 4, 5, 170),
-       (16, 4, 'Vue sur le lac', NULL, 5, 1, 160),
-       (16, 3, 'Vue sur la rivière', NULL, 1, 2, 130);
+INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix, superficie)
+VALUES (9, 2, 'Vue sur la ville', NULL, 1, 1, 100, 22),
+       (9, 4, 'Vue sur la mer', NULL, 2, 2, 150, 32),
+       (10, 3, 'Vue sur la montagne', NULL, 3, 3, 120, 27),
+       (10, 2, 'Vue sur le jardin', NULL, 4, 4, 110, 26),
+       (11, 1, 'Sans vue', NULL, 5, 5, 80, 18),
+       (11, 5, 'Vue panoramique', NULL, 1, 2, 200, 36),
+       (12, 4, 'Vue sur le lac', NULL, 2, 3, 140, 31),
+       (12, 3, 'Vue sur la rivière', NULL, 3, 4, 130, 29),
+       (13, 2, 'Vue sur la plage', NULL, 4, 5, 100, 24),
+       (13, 5, 'Vue sur le parc', NULL, 5, 1, 180, 33),
+       (14, 3, 'Vue sur la forêt', NULL, 1, 2, 120, 28),
+       (14, 4, 'Vue sur la piscine', NULL, 2, 3, 150, 30),
+       (15, 2, 'Vue sur le port', NULL, 3, 4, 110, 25),
+       (15, 5, 'Vue sur la montagne', NULL, 4, 5, 170, 34),
+       (16, 4, 'Vue sur le lac', NULL, 5, 1, 160, 32),
+       (16, 3, 'Vue sur la rivière', NULL, 1, 2, 130, 29);
 
 -- Insertion des hôtels pour la Chaîne 3
 INSERT INTO Hotel (chaine_ID, gestionnaire_ID, address_ID, nom_hotel, rating, tele_num, email, chambre_num, chambre_ID)
@@ -423,12 +424,12 @@ VALUES (3, '121212121', 67, 'Hôtel 1C', 4.2, 3456789013, 'hotel1C@example.com',
        (3, '898989898', 74, 'Hôtel 8C', 4.5, 3456789020, 'hotel8C@example.com', 9, 24);
 
 -- Insertion des chambres pour les hôtels de la Chaîne 3
-INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix)
-VALUES (17, 2, 'Vue sur la ville', NULL, 1, 1, 100),
-       (17, 3, 'Vue sur la mer', NULL, 2, 2, 150),
-       (18, 4, 'Vue sur la montagne', NULL, 3, 3, 120),
-       (18, 5, 'Vue sur le jardin', NULL, 4, 4, 110),
-       (19, 10, 'Sans vue', NULL, 5, 5, 80);
+INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix, superficie)
+VALUES (17, 2, 'Vue sur la ville', NULL, 1, 1, 100, 22),
+       (17, 3, 'Vue sur la mer', NULL, 2, 2, 150, 32),
+       (18, 4, 'Vue sur la montagne', NULL, 3, 3, 120, 27),
+       (18, 5, 'Vue sur le jardin', NULL, 4, 4, 110, 26),
+       (19, 10, 'Sans vue', NULL, 5, 5, 80, 18);
 
 
 -- Insertion des hôtels pour la Chaîne 4
@@ -443,12 +444,12 @@ VALUES (4, '010101010', 75, 'Hôtel 1D', 4.6, 4567890124, 'hotel1D@example.com',
        (4, '777777778', 82, 'Hôtel 8D', 4.2, 4567890131, 'hotel8D@example.com', 9, 32);
 
 -- Insertion des chambres pour les hôtels de la Chaîne 4
-INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix)
-VALUES(25, 2, 'Vue_ville', NULL, 1, 1, 100),
-       (25, 4, 'Vue_mer', NULL, 2, 2, 150),
-       (26, 6, 'Vue_montagne', NULL, 3, 3, 120),
-       (26, 1, 'Vue_jardin', NULL, 4, 4, 110),
-       (27, 5, 'Sans_vue', NULL, 5, 5, 80);
+INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix, superficie)
+VALUES (25, 2, 'Vue_ville', NULL, 1, 1, 100, 20),
+       (25, 4, 'Vue_mer', NULL, 2, 2, 150, 30),
+       (26, 6, 'Vue_montagne', NULL, 3, 3, 120, 29),
+       (26, 1, 'Vue_jardin', NULL, 4, 4, 110, 28),
+       (27, 5, 'Sans_vue', NULL, 5, 5, 80, 15);
 
 -- Insertion des hôtels pour la Chaîne 5
 INSERT INTO Hotel (chaine_ID, gestionnaire_ID, address_ID, nom_hotel, rating, tele_num, email, chambre_num, chambre_ID)
@@ -462,14 +463,14 @@ VALUES(5, '888888889', 83, 'Hotel_3E', 4.6, 5678901237, 'hotel3e@example.com', 1
        (5, '565656566', 90, 'Hotel_10E', 4.4, 5678901244, 'hotel10e@example.com', 10, 40);
 
 -- Insertion des chambres pour les hôtels de la Chaîne 5
-INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix)
-VALUES (33, 2, 'Vue sur la ville', NULL, 1, 1, 100),
-       (33, 1, 'Vue sur la mer', NULL, 2, 2, 150),
-       (34, 3, 'Vue sur la montagne', NULL, 3, 3, 120),
-       (34, 4, 'Vue sur le jardin', NULL, 4, 4, 110),
-       (35, 10, 'Sans vue', NULL, 5, 5, 80),
-       (35, 6, 'Vue panoramique', NULL, 1, 2, 200);
-
+INSERT INTO Chambre (hotel_ID, capacity, vue, extension, com_ID, problem_ID, prix, superficie)
+VALUES (33, 2, 'Vue sur la ville', NULL, 1, 1, 100, 22),
+       (33, 1, 'Vue sur la mer', NULL, 2, 2, 150, 32),
+       (34, 3, 'Vue sur la montagne', NULL, 3, 3, 120, 27),
+       (34, 4, 'Vue sur le jardin', NULL, 4, 4, 110, 26),
+       (35, 10, 'Sans vue', NULL, 5, 5, 80, 18),
+       (35, 6, 'Vue panoramique', NULL, 1, 2, 200, 35);
+       
 
 INSERT INTO
     employe (NAS, role_id, hotel_id)
